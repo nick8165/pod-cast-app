@@ -1,0 +1,2 @@
+class PodCastsController < ApplicationController
+end
