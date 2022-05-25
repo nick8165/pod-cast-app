@@ -1,4 +1,5 @@
 class User < ApplicationRecord
-    has_many :pod_cast, through: :user_pod_cast
+    has_many :user_pod_casts
+    has_many :pod_casts, through: :user_pod_casts
     has_secure_password
 end
