@@ -17,10 +17,6 @@ class PlaylistsController < ApplicationController
     end
     
     private
-    
-    def authorize
-        return render json: { error: "Not authorized" }, status: :unauthorized unless session.include? :user_id
-    end
 
     def playlist_params
         params.permit(:title, :user_id)
