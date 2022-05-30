@@ -9,8 +9,10 @@ Rails.application.routes.draw do
   resources :pod_casts, only: [:show, :index]
   resources :users, only: [:show, :create]
 
+  post "/signup", to: "users#create"
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
+  get "/auth", to: "users#show"
 
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!
