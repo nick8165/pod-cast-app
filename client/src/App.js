@@ -3,6 +3,7 @@ import Home from "./home"
 import Playlist from "./playlist"
 import SignUp from "./signup"
 import Login from "./login"
+import MyPodCasts from "./mypodcasts"
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 import { Container } from "react-bootstrap"
 import React, { useState, useEffect } from "react"
@@ -19,9 +20,8 @@ function App() {
     })
   },[])
 
-  function onLogin(e) {
-    e.preventDefault()
-    console.log("works")
+  function onLogin(user) {
+    setCurrentUser(user)
   }
   if(!currentUser) return (
     <div className="App">
@@ -49,7 +49,7 @@ function App() {
           <div className="auth-wrapper">
             <div className="auth-inner">
               <Routes>
-                <Route exact path="/" element={<Login setCurrentUser={setCurrentUser} />} />
+                <Route exact path="/" element={<Login onLogin={onLogin} />} />
                 <Route path="/sign-in" element={<Login />} />
                 <Route path="/sign-up" element={<SignUp />} />
               </Routes>
@@ -60,8 +60,11 @@ function App() {
   return (
     <Container>
         <NavBar />
-        <Home />
-        <Playlist />
+        <Routes>
+          <Route exact path="home" element={<Home />} />
+          <Route exact path="mypodcasts" element={<MyPodCasts />} />
+          <Route exact path="playlist" element={<Playlist />} />
+        </Routes>
     </Container>
   );
 }
