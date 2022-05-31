@@ -6,8 +6,11 @@ function NavBar() {
   return (
     <Navbar bg="light" expand="lg">
       <Nav className="mr-auto">
-        <LinkContainer to="/">
+        <LinkContainer to="/home">
           <Nav.Link>Home</Nav.Link>
+        </LinkContainer>
+        <LinkContainer to="/mypodcasts">
+          <Nav.Link>My Podcasts</Nav.Link>
         </LinkContainer>
         <LinkContainer to="/playlist">
           <Nav.Link>Playlist</Nav.Link>
