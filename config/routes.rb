@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :episodes, only: [:show, :index]
   resources :playlist_pod_casts
   resources :pod_cast_genres
   resources :user_pod_casts

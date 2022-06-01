@@ -4,4 +4,5 @@ class PodCast < ApplicationRecord
     belongs_to :creator
     has_many :pod_cast_genres 
     has_many :genres, through: :pod_cast_genres
+    has_many :episodes
 end
