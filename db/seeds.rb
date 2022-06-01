@@ -1,0 +1,1 @@
+genre = Genre.create(category:"comedy")
