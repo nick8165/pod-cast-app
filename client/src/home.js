@@ -4,7 +4,16 @@ import PodCastSearch from "./podcastsearch"
 import {Container} from "react-bootstrap"
 
 function Home() {
-    const [podCastList, setPodCastList] = useState({id: 1, title: "Hey Riddle Riddle", thumbnail: "", length: 360, creator_id: 1})
+    const [podCastList, setPodCastList] = useState("")
+
+    useEffect(() => [
+        fetch('/podcast')
+        .then(res => {
+            if(res.ok) {
+                res.json().then(podcast => setPodCastList(podcast))
+            }
+        })
+    ],[])
 
     return (
         <Container>
