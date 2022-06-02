@@ -3,9 +3,17 @@ import {Button} from "react-bootstrap"
 
 function Browse({podCastList}) {
     
+    function displayPodCast() {
+        if (podCastList !== "") {
+            return podCastList.map((pod) => {
+                return (<div key={pod.title}><img src={pod.thumb_nail} alt="error" /><Button>{pod.title}</Button></div>)
+            })
+        }
+    }
+
     return (
         <div>
-            <Button>{podCastList.title}</Button>
+            {displayPodCast()}
         </div>
     )
 }
