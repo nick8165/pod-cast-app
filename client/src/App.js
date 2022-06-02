@@ -4,7 +4,7 @@ import Playlist from "./playlist"
 import SignUp from "./signup"
 import Login from "./login"
 import MyPodCasts from "./mypodcasts"
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
+import { Routes, Route, Link } from 'react-router-dom'
 import { Container } from "react-bootstrap"
 import React, { useState, useEffect } from "react"
 
