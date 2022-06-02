@@ -1,5 +1,5 @@
 class PodCastsController < ApplicationController
-    before_action :authorize 
+    before_action :authorized 
     
     def show
         pod_cast = PodCast.find(params[:id])

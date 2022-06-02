@@ -1,5 +1,5 @@
 class GenresController < ApplicationController
-    before_action :authorize 
+    before_action :authorized
     
     def show
         genre = Genre.find(params[:id])

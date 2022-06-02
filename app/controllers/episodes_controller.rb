@@ -1,5 +1,5 @@
 class EpisodesController < ApplicationController
-    before_action :authorize 
+    before_action :authorized 
     
     def show
         episode = Episode.find(params[:id])

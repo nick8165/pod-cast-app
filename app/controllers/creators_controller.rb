@@ -1,5 +1,5 @@
 class CreatorsController < ApplicationController
-    before_action :authorize 
+    before_action :authorized 
     
     def show
         creator = Creator.find(params[:id])

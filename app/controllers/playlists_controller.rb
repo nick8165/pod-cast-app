@@ -1,5 +1,5 @@
 class PlaylistsController < ApplicationController
-    before_action :authorize 
+    before_action :authorized
     
     def show
         playlist = Playlist.find(params[:id])
