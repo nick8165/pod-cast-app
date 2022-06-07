@@ -8,6 +8,11 @@ class EpisodesController < ApplicationController
     
     def index
         episodes = Episode.all
+        render json: episodes, include: :pod_cast
+    end
+
+    def episodes
+        episodes = Episode.find_by(params[:pod_cast_id])
         render json: episodes
     end
 

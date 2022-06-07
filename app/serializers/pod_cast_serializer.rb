@@ -1,3 +1,3 @@
 class PodCastSerializer < ActiveModel::Serializer
-  attributes :title, :thumb_nail 
+  attributes :id, :title, :thumb_nail, :episodes 
 end
