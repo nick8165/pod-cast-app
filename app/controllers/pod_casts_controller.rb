@@ -3,7 +3,7 @@ class PodCastsController < ApplicationController
     
     def show
         pod_cast = PodCast.find(params[:id])
-        render json: pod_cast, include: :episodes
+        render json: pod_cast, include: [:episodes, :genres, :creator]
     end
     
     def index
