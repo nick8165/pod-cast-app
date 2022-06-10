@@ -2,7 +2,7 @@ import React, {useState} from "react"
 import {Button} from "react-bootstrap"
 import Episodes from "./episodes"
 
-function Browse({podCastList}) {
+function Browse({podCastList, user}) {
     const [selectedPodCast, setSelectedPodCast] = useState("") 
     
     function handleOnClick(e) {
@@ -17,7 +17,7 @@ function Browse({podCastList}) {
     function displayPodCast() {
         if (selectedPodCast !== "") {
             return (
-                <Episodes selectedPodCast={selectedPodCast} />
+                <Episodes selectedPodCast={selectedPodCast} user={user}/>
             )
         }
         if (podCastList !== "") {

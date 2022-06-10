@@ -3,7 +3,7 @@ import Browse from "./browse"
 import PodCastSearch from "./podcastsearch"
 import {Container} from "react-bootstrap"
 
-function Home() {
+function Home({user}) {
     const [podCastList, setPodCastList] = useState("")
 
     useEffect(() => [
@@ -18,7 +18,7 @@ function Home() {
     return (
         <Container>
             <PodCastSearch />
-            <Browse podCastList={podCastList}/>
+            <Browse podCastList={podCastList} user={user}/>
         </Container>
     )
 }
