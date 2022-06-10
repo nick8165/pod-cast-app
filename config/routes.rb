@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   delete "/logout", to: "sessions#destroy"
   get "/auth", to: "users#show"
   get "/podcast", to: "pod_casts#index"
+  post "/userPod", to: "user_pod_casts#create"
 
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!
