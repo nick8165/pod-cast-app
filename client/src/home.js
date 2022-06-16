@@ -5,6 +5,7 @@ import {Container} from "react-bootstrap"
 
 function Home({user}) {
     const [podCastList, setPodCastList] = useState("")
+    const [desiredSearch, setDesiredSearch] = useState("")
 
     useEffect(() => [
         fetch('/podcast')
@@ -15,10 +16,14 @@ function Home({user}) {
         })
     ],[])
 
+    function handleSearchValue(e) {
+        setDesiredSearch(e)
+    }
+
     return (
         <Container>
-            <PodCastSearch />
-            <Browse podCastList={podCastList} user={user}/>
+            <PodCastSearch handleSearchValue={handleSearchValue}/>
+            <Browse podCastList={podCastList} user={user} desiredSearch={desiredSearch}/>
         </Container>
     )
 }

@@ -1,14 +1,15 @@
 import React, {useState} from "react"
 import { FormControl, InputGroup, Button} from "react-bootstrap"
 
-function PodCastSearch() {
-    const [searchValue, setSearchValue] = useState("")
+function PodCastSearch({handleSearchValue}) {
+  const [searchValue, setSearchValue] = useState("")
+    
     function searchChange(e) {
         setSearchValue(e.target.value)
     }
 
     function handleClick() {
-        console.log(searchValue)
+        handleSearchValue(searchValue)
     }
 
     return(
