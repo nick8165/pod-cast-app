@@ -2,9 +2,9 @@ import React, {useState} from "react"
 import {Button} from "react-bootstrap"
 import Episodes from "./episodes"
 
-function Browse({podCastList, user}) {
+function Browse({podCastList, user, desiredSearch}) {
     const [selectedPodCast, setSelectedPodCast] = useState("") 
-    
+
     function handleOnClick(e) {
         fetch(`/pod_casts/${e.target.parentNode.value}`)
         .then(res => {
@@ -17,7 +17,23 @@ function Browse({podCastList, user}) {
     function displayPodCast() {
         if (selectedPodCast !== "") {
             return (
-                <Episodes selectedPodCast={selectedPodCast} user={user}/>
+                <div>
+                    <Button type="button" onClick={handleBack}>Back</Button>
+                    <Episodes selectedPodCast={selectedPodCast} user={user}/>
+                </div>
+            )
+        }
+        if (desiredSearch !== "") {
+            let found = podCastList.find((pod) => {
+                return pod.title === desiredSearch
+            })
+            return (
+                <div>
+                    <Button type="button" value={found.id} className="btn btn-dark" onClick={handleOnClick}>
+                        <h4>{found.title}</h4>
+                        <img src={found.thumb_nail} alt="error" />
+                    </Button>
+                </div>
             )
         }
         if (podCastList !== "") {
@@ -32,6 +48,10 @@ function Browse({podCastList, user}) {
         } else {
             return (<h1>Loading...</h1>)
         }
+    }
+
+    function handleBack() {
+        setSelectedPodCast("")
     }
 
     return (
