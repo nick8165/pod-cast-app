@@ -61,9 +61,9 @@ function App() {
     <Container>
         <NavBar />
         <Routes>
-          <Route exact path="home" element={<Home user={currentUser}/>} />
-          <Route exact path="mypodcasts" element={<MyPodCasts />} />
+          <Route exact path="mypodcasts" element={<MyPodCasts user={currentUser}/>} />
           <Route exact path="playlist" element={<Playlist />} />
+          <Route exact path="/" element={<Home user={currentUser}/>} />
         </Routes>
     </Container>
   );
