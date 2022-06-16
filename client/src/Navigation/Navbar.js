@@ -6,7 +6,7 @@ function NavBar() {
   return (
     <Navbar bg="light" expand="lg">
       <Nav className="mr-auto">
-        <LinkContainer to="/home">
+        <LinkContainer to="/">
           <Nav.Link>Home</Nav.Link>
         </LinkContainer>
         <LinkContainer to="/mypodcasts">
