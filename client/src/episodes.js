@@ -1,7 +1,7 @@
-import React, {useState, useEffect} from "react"
+import React, {useState} from "react"
 import {Button} from "react-bootstrap"
 
-function Episodes({selectedPodCast, user}) {
+function Episodes({selectedPodCast, user, handleToggle}) {
     const [currentPodCast, setCurrentPodCast] = useState(false)
     const [isClick, setClick] = useState(false)
     
@@ -9,13 +9,14 @@ function Episodes({selectedPodCast, user}) {
         user.pod_casts.map((pod) => {
             if (pod.title === selectedPodCast.title) {
                 setCurrentPodCast(true)
+                setClick(true)
             } else {
                 console.log(false)
             }
         })
     }
     
-    function handleOnClick() {
+    function handleAdd() {
         const userPod = {
             user_id: user.id,
             pod_cast_id: selectedPodCast.id
@@ -24,7 +25,22 @@ function Episodes({selectedPodCast, user}) {
             method: 'POST',
             headers: {'Content-Type':'application/json'},
             body: JSON.stringify(userPod)
-        }) 
+        })
+        setClick(true)
+    }
+
+    function handleUnAdd() {
+        setClick(false)
+        fetch(`/userPodDelete/${user.id}/${selectedPodCast.id}`, {
+            method: 'DELETE',
+        })
+        .then((res) => {
+            if(res.ok){
+                console.log(res)
+            } else {
+                res.json().then(console.log)
+            }
+        })
     }
 
     function displayEpisodes() {
@@ -32,7 +48,7 @@ function Episodes({selectedPodCast, user}) {
             <ul>
                 <h1 className='li'>{selectedPodCast.title}</h1>
                 <img src={selectedPodCast.thumb_nail} alt="error" />
-                {(currentPodCast === true ? <Button>Added</Button> : <Button onClick={handleOnClick} value={isClick}>+</Button>)}
+                {(isClick === true ? <Button onClick={handleUnAdd}>-</Button> : <Button onClick={handleAdd} value={isClick}>+</Button>)}
             {selectedPodCast.episodes.map((ep) => {
             return ( 
                 <div key={ep.title}>
