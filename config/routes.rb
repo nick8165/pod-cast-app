@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   get "/auth", to: "users#show"
   get "/podcast", to: "pod_casts#index"
   post "/userPod", to: "user_pod_casts#create"
+  delete "/userPodDelete/:user_id/:pod_cast_id", to: "user_pod_casts#destroy"
+  
 
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!
