@@ -12,7 +12,7 @@ class PlaylistsController < ApplicationController
     end
     
     def create
-        playlist = Playlist.create(playlist_params session[:user_id])
+        playlist = Playlist.create(playlist_params)
         render json: playlist, status: :created
     end
     
