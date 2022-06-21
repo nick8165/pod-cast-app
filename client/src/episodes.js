@@ -1,7 +1,7 @@
 import React, {useState} from "react"
 import {Button} from "react-bootstrap"
 
-function Episodes({selectedPodCast, user, handleToggle}) {
+function Episodes({selectedPodCast, user}) {
     const [currentPodCast, setCurrentPodCast] = useState(false)
     const [isClick, setClick] = useState(false)
     
@@ -48,7 +48,7 @@ function Episodes({selectedPodCast, user, handleToggle}) {
             <ul>
                 <h1 className='li'>{selectedPodCast.title}</h1>
                 <img src={selectedPodCast.thumb_nail} alt="error" />
-                {(isClick === true ? <Button onClick={handleUnAdd}>-</Button> : <Button onClick={handleAdd} value={isClick}>+</Button>)}
+                {(isClick === true ? <Button onClick={handleUnAdd}>- Remove From Library</Button> : <Button onClick={handleAdd} value={isClick}>+ Add To Library</Button>)}
             {selectedPodCast.episodes.map((ep) => {
             return ( 
                 <div key={ep.title}>

@@ -1,8 +1,9 @@
 import React, {useState} from "react"
 import {Button} from 'react-bootstrap'
 
-function CreatePlaylist({handleCreate}) {
+function CreatePlaylist({handleCreate, user}) {
     const [title, setTitle] = useState("")
+    console.log(user)
 
     function handleChange(e) {
         setTitle(e.target.value)
@@ -10,6 +11,15 @@ function CreatePlaylist({handleCreate}) {
 
     function handleClick() {
         handleCreate()
+        const playlist = {
+            user_id: user.id,
+            title: title
+        }
+        fetch('/playlists', {
+            method: 'POST',
+            headers: {'Content-Type':'application/json'},
+            body: JSON.stringify(playlist)
+        })
     }
 
     return (
