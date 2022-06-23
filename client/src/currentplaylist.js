@@ -5,15 +5,24 @@ import AddToPlaylist from "./addtoplaylist"
 function CurrentPlaylist({reset, user, selectedPlaylist}) {
   const [podList, setPodList] = useState("")
   const [toggleAdd, setToggleAdd] = useState(false)
-    
+  console.log(podList)
   useEffect(() => {
-    fetch(`/playlistPod/${user.playlists.id}`)
+    fetch(`/playlistPod/${selectedPlaylist[0].id}`)
     .then(res => {
       if(res.ok) {
         res.json().then(pod => setPodList(pod))
       }
     })
-  },[])
+  },[toggleAdd])
+
+  function updatePodList() {
+    fetch(`/playlistPod/${selectedPlaylist[0].id}`)
+    .then(res => {
+      if(res.ok) {
+        res.json().then(pod => setPodList(pod))
+      }
+    })
+  }
 
   function handleAddReset() {
     setToggleAdd(false)
@@ -28,6 +37,13 @@ function CurrentPlaylist({reset, user, selectedPlaylist}) {
       return (
         <div>
           <h1 className="li">Currently In Playlist</h1>
+          {podList.map((pod) => {
+            return (
+              <div key={pod.pod_cast.title}>
+                <img src={pod.pod_cast.thumb_nail} alt="error" />
+              </div>
+            )
+          })}
         </div>
       )
     } else {
@@ -45,7 +61,7 @@ function CurrentPlaylist({reset, user, selectedPlaylist}) {
         <Button type="button" onClick={reset}>back</Button>
         <h1 className="li">{selectedPlaylist[0].title}</h1>
         <div>
-          <Button type="button" className="btn btn-dark" onClick={handleAdd}>+ Add To Playlist</Button>
+          <Button type="button" className="btn btn-dark" onClick={handleAdd}>Add/Remove From Playlist</Button>
         </div>
       </div>
     )
@@ -53,7 +69,7 @@ function CurrentPlaylist({reset, user, selectedPlaylist}) {
 
   if(toggleAdd === true) {
     return (
-      <AddToPlaylist user={user} selectedPlaylist={selectedPlaylist} handleAddReset={handleAddReset}/>
+      <AddToPlaylist user={user} podList={podList} selectedPlaylist={selectedPlaylist} handleAddReset={handleAddReset} updatePodList={updatePodList}/>
     )
   } else {
     return (
