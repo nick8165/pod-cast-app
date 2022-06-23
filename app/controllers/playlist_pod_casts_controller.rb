@@ -3,11 +3,11 @@ class PlaylistPodCastsController < ApplicationController
 
     def show
         playlist_pod = PlaylistPodCast.where(playlist_id: params[:playlist_id])
-        render json: playlist_pod
+        render json: playlist_pod, include: :pod_cast
     end
 
     def create
-        playlist_pod_casts = PlaylistPodCast.create(playlist_pod_cast_params)
+        playlist_pod_cast = PlaylistPodCast.create(playlist_pod_cast_params)
         render json: playlist_pod_cast, status: :created
     end
 
