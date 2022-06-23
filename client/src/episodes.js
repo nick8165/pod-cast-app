@@ -48,7 +48,7 @@ function Episodes({selectedPodCast, user}) {
             <ul>
                 <h1 className='li'>{selectedPodCast.title}</h1>
                 <img src={selectedPodCast.thumb_nail} alt="error" />
-                {(isClick === true ? <Button onClick={handleUnAdd}>- Remove From Library</Button> : <Button onClick={handleAdd} value={isClick}>+ Add To Library</Button>)}
+                {(isClick === true ? <Button className="btn btn-danger" onClick={handleUnAdd}>- Remove From Library</Button> : <Button onClick={handleAdd} value={isClick}>+ Add To Library</Button>)}
             {selectedPodCast.episodes.map((ep) => {
             return ( 
                 <div key={ep.title}>
