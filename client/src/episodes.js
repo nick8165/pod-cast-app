@@ -1,13 +1,23 @@
-import React, {useState} from "react"
+import React, {useState, useEffect} from "react"
 import {Button} from "react-bootstrap"
 
 function Episodes({selectedPodCast, user}) {
     const [currentPodCast, setCurrentPodCast] = useState(false)
     const [isClick, setClick] = useState(false)
+    const [podList, setPodList] = useState("") 
+    console.log(podList)
+    useEffect(() => {
+        fetch(`/userPod/${user.id}`)
+        .then(res => {
+          if(res.ok) {
+            res.json().then(pod => setPodList(pod))
+          }
+        })
+      },[])
     
-    if (currentPodCast !== true) {
-        user.pod_casts.map((pod) => {
-            if (pod.title === selectedPodCast.title) {
+    if (podList !== "" && currentPodCast !== true) {
+        podList.map((pod) => {
+            if (pod.pod_cast.title === selectedPodCast.title) {
                 setCurrentPodCast(true)
                 setClick(true)
             } else {
@@ -48,7 +58,7 @@ function Episodes({selectedPodCast, user}) {
             <ul>
                 <h1 className='li'>{selectedPodCast.title}</h1>
                 <img src={selectedPodCast.thumb_nail} alt="error" />
-                {(isClick === true ? <Button className="btn btn-danger" onClick={handleUnAdd}>- Remove From Library</Button> : <Button onClick={handleAdd} value={isClick}>+ Add To Library</Button>)}
+                {(isClick === true ? <Button className="btn btn-danger" onClick={handleUnAdd}>- Remove From Library</Button> : <Button className="btn btn-dark" onClick={handleAdd} value={isClick}>+ Add To Library</Button>)}
             {selectedPodCast.episodes.map((ep) => {
             return ( 
                 <div key={ep.title}>

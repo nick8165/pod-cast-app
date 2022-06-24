@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :episodes, only: [:show, :index]
   resources :playlist_pod_casts, only: [:show, :create, :destroy]
   resources :pod_cast_genres
-  resources :user_pod_casts
+  resources :user_pod_casts, only: [:show, :create, :destroy]
   resources :creators, only: [:show, :index]
   resources :playlists, only: [:create, :index, :show, :update, :destroy]
   resources :genres, only: [:show, :index]
@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   delete "/logout", to: "sessions#destroy"
   get "/auth", to: "users#show"
   get "/podcast", to: "pod_casts#index"
+  get "/userPod/:user_id", to: "user_pod_casts#show"
   post "/userPod", to: "user_pod_casts#create"
   delete "/userPodDelete/:user_id/:pod_cast_id", to: "user_pod_casts#destroy"
   get "/playlistPod/:playlist_id", to: "playlist_pod_casts#show"

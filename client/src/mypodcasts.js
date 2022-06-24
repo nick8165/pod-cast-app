@@ -1,10 +1,20 @@
-import React, {useState} from "react"
+import React, {useState, useEffect} from "react"
 import {Button} from "react-bootstrap"
 import Episodes from "./episodes"
 
 function MyPodCasts({user}) {
     const [selectedPodCast, setSelectedPodCast] = useState("")
-    const [toggle, setToggle] = useState(false) 
+    const [toggle, setToggle] = useState(false)
+    const [podList, setPodList] = useState("") 
+    console.log(podList)
+    useEffect(() => {
+        fetch(`/userPod/${user.id}`)
+        .then(res => {
+          if(res.ok) {
+            res.json().then(pod => setPodList(pod))
+          }
+        })
+      },[])
 
     function handleToggle() {
         setToggle(!toggle)
@@ -28,12 +38,12 @@ function MyPodCasts({user}) {
                 </div>
             )
         }
-        if (user.pod_casts !== false) {
-            return user.pod_casts.map((pod) => {
-                return (<div key={pod.title}>
-                            <Button type="button" value={pod.id} className="btn btn-dark" onClick={handleOnClick}>
-                                <h4>{pod.title}</h4>
-                                <img src={pod.thumb_nail} alt="error" />
+        if (podList !== "") {
+            return podList.map((pod) => {
+                return (<div key={pod.pod_cast.title}>
+                            <Button type="button" value={pod.pod_cast.id} className="btn btn-dark" onClick={handleOnClick}>
+                                <h4>{pod.pod_cast.title}</h4>
+                                <img src={pod.pod_cast.thumb_nail} alt="error" />
                             </Button>
                         </div>)
             })

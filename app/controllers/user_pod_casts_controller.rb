@@ -1,6 +1,11 @@
 class UserPodCastsController < ApplicationController
     before_action :authorized 
 
+    def show
+        user_pod = UserPodCast.where(user_id: params[:user_id])
+        render json: user_pod, include: [:pod_cast]
+    end
+
     def create
         user_pod = UserPodCast.create(user_pod_params)
         render json: user_pod, status: :created
