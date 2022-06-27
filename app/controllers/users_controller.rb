@@ -5,7 +5,7 @@ class UsersController < ApplicationController
     def show
       user = User.find_by(id: session[:user_id])
       if user
-        render json: user, include: (:pod_casts, :playlists)
+        render json: user, include: :pod_casts
       else
         render json: { error: "Not authorized" }, status: :unauthorized
       end

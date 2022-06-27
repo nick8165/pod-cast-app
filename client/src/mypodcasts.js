@@ -6,7 +6,7 @@ function MyPodCasts({user}) {
     const [selectedPodCast, setSelectedPodCast] = useState("")
     const [toggle, setToggle] = useState(false)
     const [podList, setPodList] = useState("") 
-    console.log(podList)
+    
     useEffect(() => {
         fetch(`/userPod/${user.id}`)
         .then(res => {

@@ -4,19 +4,19 @@ import {Button} from "react-bootstrap"
 function Episodes({selectedPodCast, user}) {
     const [currentPodCast, setCurrentPodCast] = useState(false)
     const [isClick, setClick] = useState(false)
-    const [podList, setPodList] = useState("") 
-    console.log(podList)
+    const [selectedPod, setSelectedPod] = useState("") 
+    
     useEffect(() => {
         fetch(`/userPod/${user.id}`)
         .then(res => {
           if(res.ok) {
-            res.json().then(pod => setPodList(pod))
+            res.json().then(pod => setSelectedPod(pod))
           }
         })
       },[])
     
-    if (podList !== "" && currentPodCast !== true) {
-        podList.map((pod) => {
+    if (selectedPod !== "" && currentPodCast !== true) {
+        selectedPod.map((pod) => {
             if (pod.pod_cast.title === selectedPodCast.title) {
                 setCurrentPodCast(true)
                 setClick(true)
