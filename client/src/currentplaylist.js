@@ -1,11 +1,12 @@
 import React, {useState, useEffect} from "react"
 import {Button} from "react-bootstrap"
 import AddToPlaylist from "./addtoplaylist"
+import RemovePlaylist from "./removeplaylist"
 
 function CurrentPlaylist({reset, user, selectedPlaylist}) {
   const [podList, setPodList] = useState("")
   const [toggleAdd, setToggleAdd] = useState(false)
-  console.log(podList)
+  
   useEffect(() => {
     fetch(`/playlistPod/${selectedPlaylist[0].id}`)
     .then(res => {
@@ -60,6 +61,7 @@ function CurrentPlaylist({reset, user, selectedPlaylist}) {
       <div>
         <Button type="button" onClick={reset}>back</Button>
         <h1 className="li">{selectedPlaylist[0].title}</h1>
+        <RemovePlaylist selectedPlaylist={selectedPlaylist} user={user}/>
         <div>
           <Button type="button" className="btn btn-dark" onClick={handleAdd}>Add/Remove From Playlist</Button>
         </div>

@@ -3,7 +3,6 @@ import {Button} from 'react-bootstrap'
 
 function CreatePlaylist({handleCreate, user}) {
     const [title, setTitle] = useState("")
-    console.log(user)
 
     function handleChange(e) {
         setTitle(e.target.value)

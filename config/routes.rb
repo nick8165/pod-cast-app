@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   get "/userPod/:user_id", to: "user_pod_casts#show"
   post "/userPod", to: "user_pod_casts#create"
   delete "/userPodDelete/:user_id/:pod_cast_id", to: "user_pod_casts#destroy"
+  get "/userPlaylists/:user_id", to: "playlists#user_playlists"
   get "/playlistPod/:playlist_id", to: "playlist_pod_casts#show"
   post "/playlistPod", to: "playlist_pod_casts#create"
   delete "/playlistPodDelete/:playlist_id/:pod_cast_id", to: "playlist_pod_casts#destroy"
