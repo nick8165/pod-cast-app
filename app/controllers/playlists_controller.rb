@@ -25,6 +25,16 @@ class PlaylistsController < ApplicationController
         render json: playlist, status: :created
     end
 
+    def update
+        playlist = Playlist.find_by(id: params[:id])
+        if playlist
+            playlist.update(playlist_params)
+            render json: playlist, status: :accepted
+        else
+            render json: {error: "playlist not found"}, status: :not_found
+        end
+    end
+
     def destroy
         playlist = Playlist.find(params[:id])
         if playlist

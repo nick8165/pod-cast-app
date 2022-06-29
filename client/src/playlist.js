@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react"
-import {Button} from 'react-bootstrap'
+import {Button, Container} from 'react-bootstrap'
 import CreatePlaylist from './createplaylist'
 import CurrentPlaylist from "./currentplaylist"
 
@@ -29,6 +29,7 @@ function Playlist({user}) {
     }
 
     function handleTogglePlaylist() {
+        console.log("playlist toggle")
         setTogglePlaylist(!togglePlaylist)
     }
 
@@ -45,7 +46,7 @@ function Playlist({user}) {
         }
         if (selectedPlaylist !== "") {
             return (
-                <CurrentPlaylist selectedPlaylist={selectedPlaylist} user={user} reset={resetSelectedPlaylist}/>
+                <CurrentPlaylist selectedPlaylist={selectedPlaylist} user={user} reset={resetSelectedPlaylist} handleTogglePlaylist={handleTogglePlaylist}/>
             )
         }
         if (createToggle === false && playlists !== "") {
@@ -71,9 +72,9 @@ function Playlist({user}) {
     }
 
     return(
-        <div>
+        <Container>
             {displayPlaylist()}
-        </div>
+        </Container>
     )
 }
 
