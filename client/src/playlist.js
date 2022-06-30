@@ -53,14 +53,13 @@ function Playlist({user}) {
             return (
                 <div>
                     <div>
-                        <h4 className="li">Create Playlist</h4>
-                        <Button type="button" onClick={handleCreate}>+</Button>
+                        <Button type="button" class="btn btn-dark btn-outline-light btn-lg" onClick={handleCreate}>Create Playlist</Button>
                     </div>
                     <h1>Your Playlists</h1>
                     <div>
                         {playlists.map((playlist) => {
                             return (
-                                <Button  key={playlist.title} type="button" className="btn btn-dark" onClick={handleSelectedPlaylist}>
+                                <Button  key={playlist.title} type="button" className="btn btn-dark btn-outline-light btn-sm" onClick={handleSelectedPlaylist}>
                                     <h4 id={playlist.id} className="li">{playlist.title}</h4>
                                 </Button>
                             )

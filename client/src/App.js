@@ -5,7 +5,7 @@ import SignUp from "./signup"
 import Login from "./login"
 import MyPodCasts from "./mypodcasts"
 import { Routes, Route, Link } from 'react-router-dom'
-import { Container } from "react-bootstrap"
+import { Container, Button } from "react-bootstrap"
 import React, { useState, useEffect } from "react"
 
 function App() {
@@ -23,6 +23,11 @@ function App() {
   function onLogin(user) {
     setCurrentUser(user)
   }
+
+  function handleLogout() {
+    setCurrentUser("")
+  }
+
   if(!currentUser) return (
     <div className="App">
           <nav className="navbar navbar-expand-lg navbar-light fixed-top">
@@ -58,14 +63,15 @@ function App() {
         </div>
   )
   return (
-    <Container>
-        <NavBar />
-        <Routes>
-          <Route exact path="mypodcasts" element={<MyPodCasts user={currentUser}/>} />
-          <Route exact path="playlist" element={<Playlist user={currentUser}/>} />
-          <Route exact path="/" element={<Home user={currentUser}/>} />
-        </Routes>
-    </Container>
+    <div class="container p-3 my-3 bg-dark text-white">
+      <button type="button" class="btn btn-link" onClick={handleLogout}>Logout</button>
+      <NavBar />
+      <Routes>
+        <Route exact path="mypodcasts" element={<MyPodCasts user={currentUser}/>} />
+        <Route exact path="playlist" element={<Playlist user={currentUser}/>} />
+        <Route exact path="/" element={<Home user={currentUser}/>} />
+      </Routes>
+    </div>
   );
 }
 

@@ -63,7 +63,7 @@ function Episodes({selectedPodCast, user}) {
             return ( 
                 <div key={ep.title}>
                     <li className='li'>{ep.title}</li>
-                    <Button>Play</Button>
+                    <button class="btn btn-outline-light btn-sm">Play</button>
                     <h6 className='li'>{ep.length} minutes</h6>
                 </div>)
             })}

@@ -18,7 +18,7 @@ function Browse({podCastList, user, desiredSearch}) {
         if (selectedPodCast !== "") {
             return (
                 <div>
-                    <Button type="button" onClick={handleBack}>Back</Button>
+                    <button type="button" class="btn btn-dark btn-outline-light btn-sm" onClick={handleBack}>Back</button>
                     <Episodes selectedPodCast={selectedPodCast} user={user}/>
                 </div>
             )
@@ -39,9 +39,9 @@ function Browse({podCastList, user, desiredSearch}) {
         if (podCastList !== "") {
             return podCastList.map((pod) => {
                 return (<div key={pod.title}>
+                            <h4>{pod.title}</h4>
                             <Button type="button" value={pod.id} className="btn btn-dark" onClick={handleOnClick}>
-                                <h4>{pod.title}</h4>
-                                <img src={pod.thumb_nail} alt="error" />
+                                <img src={pod.thumb_nail} alt="error" class="img-thumbnail"  />
                             </Button>
                         </div>)
             })

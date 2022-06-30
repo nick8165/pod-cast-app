@@ -4,8 +4,8 @@ import {LinkContainer} from 'react-router-bootstrap'
 
 function NavBar() {
   return (
-    <Navbar bg="light" expand="lg">
-      <Nav className="mr-auto">
+    <Navbar>
+      <Nav class="navbar navbar-expand-sm bg-light justify-content-left">
         <LinkContainer to="/">
           <Nav.Link>Home</Nav.Link>
         </LinkContainer>
