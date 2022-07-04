@@ -5,7 +5,6 @@ import SignUp from "./signup"
 import Login from "./login"
 import MyPodCasts from "./mypodcasts"
 import { Routes, Route, Link } from 'react-router-dom'
-import { Container, Button } from "react-bootstrap"
 import React, { useState, useEffect } from "react"
 
 function App() {
@@ -55,8 +54,8 @@ function App() {
             <div className="auth-inner">
               <Routes>
                 <Route exact path="/" element={<Login onLogin={onLogin} />} />
-                <Route path="/sign-in" element={<Login />} />
-                <Route path="/sign-up" element={<SignUp />} />
+                <Route path="/sign-in" element={<Login onLogin={onLogin} />} />
+                <Route path="/sign-up" element={<SignUp onLogin={onLogin} />} />
               </Routes>
             </div>
           </div>

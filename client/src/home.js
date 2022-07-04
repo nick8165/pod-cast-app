@@ -22,6 +22,7 @@ function Home({user}) {
     return (
         <div>
             <PodCastSearch handleSearchValue={handleSearchValue}/>
+            <h1>Home Page Browse</h1>
             <Browse podCastList={podCastList} user={user} desiredSearch={desiredSearch}/>
         </div>
     )

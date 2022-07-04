@@ -39,7 +39,7 @@ function Browse({podCastList, user, desiredSearch}) {
         if (podCastList !== "") {
             return podCastList.map((pod) => {
                 return (<div key={pod.title}>
-                            <h4>{pod.title}</h4>
+                            <h4>|{pod.title}|</h4>
                             <Button type="button" value={pod.id} className="btn btn-dark" onClick={handleOnClick}>
                                 <img src={pod.thumb_nail} alt="error" class="img-thumbnail"  />
                             </Button>

@@ -29,7 +29,6 @@ function Playlist({user}) {
     }
 
     function handleTogglePlaylist() {
-        console.log("playlist toggle")
         setTogglePlaylist(!togglePlaylist)
     }
 
@@ -53,7 +52,7 @@ function Playlist({user}) {
             return (
                 <div>
                     <div>
-                        <Button type="button" class="btn btn-dark btn-outline-light btn-lg" onClick={handleCreate}>Create Playlist</Button>
+                        <Button type="button" className="btn btn-dark btn-outline-success btn-lg" onClick={handleCreate}>Create Playlist</Button>
                     </div>
                     <h1>Your Playlists</h1>
                     <div>

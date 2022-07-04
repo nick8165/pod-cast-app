@@ -13,10 +13,10 @@ function DeleteWarning({handleToggle, handleDelete}) {
     }
 
     return(
-        <div>
+        <div class="btn-group">
             <h4 className="li">Delete Playlist?</h4>
-            <Button type="button" className="btn btn-danger" onClick={handleYes}>Yes</Button>
-            <Button type="button" className="btn btn-dark"onClick={handleNo}>No</Button>
+            <Button type="button" className="btn btn-dark btn-outline-danger" onClick={handleYes}>Yes</Button>
+            <Button type="button" className="btn btn-dark btn-outline-light"onClick={handleNo}>No</Button>
         </div>
     )
 }

@@ -29,7 +29,7 @@ function RemovePlaylist({selectedPlaylist, user}) {
     } else {
         return(
             <div>
-                <Button type="button" className="btn btn-danger" onClick={handleToggle}>X</Button>
+                <Button type="button" className="btn btn-dark btn-outline-danger" onClick={handleToggle}>Delete Playlist</Button>
             </div>
         )
     }

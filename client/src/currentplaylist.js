@@ -38,7 +38,8 @@ function CurrentPlaylist({reset, user, selectedPlaylist, handleTogglePlaylist}) 
     if (podList.length !== 0) {
       return (
         <div>
-          <h1 className="li">Currently In Playlist</h1>
+          <h1 className="li">{selectedPlaylist[0].title}</h1>
+          <h2 className="li">Currently In Playlist</h2>
           {podList.map((pod) => {
             return (
               <div key={pod.pod_cast.title}>
@@ -59,14 +60,11 @@ function CurrentPlaylist({reset, user, selectedPlaylist, handleTogglePlaylist}) 
 
   function displayCurrentPlaylist() {
     return (
-      <div>
-        <Button type="button" onClick={reset}>back</Button>
+      <div class="btn-group">
+        <Button type="button" className="btn btn-dark btn-outline-light btn-sm" onClick={reset}>back</Button>
         <UpdatePlaylistTitle selectedPlaylist={selectedPlaylist} handleTogglePlaylist={handleTogglePlaylist}/>
-        <h1 className="li">{selectedPlaylist[0].title}</h1>
+        <Button type="button" className="btn btn-dark btn-outline-light" onClick={handleAdd}>Add/Remove From Playlist</Button>
         <RemovePlaylist selectedPlaylist={selectedPlaylist} user={user}/>
-        <div>
-          <Button type="button" className="btn btn-dark" onClick={handleAdd}>Add/Remove From Playlist</Button>
-        </div>
       </div>
     )
   }

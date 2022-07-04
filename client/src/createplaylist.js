@@ -23,7 +23,7 @@ function CreatePlaylist({handleCreate, user}) {
 
     return (
         <div>
-            <Button onClick={handleCreate}>back</Button>
+            <Button className="btn btn-dark btn-outline-light btn-sm" onClick={handleCreate}>back</Button>
             <div>
                 <input type="text" placeholder="Playlist Title" onChange={handleChange}></input>
                 <Button type="button" onClick={handleClick}>Enter</Button>

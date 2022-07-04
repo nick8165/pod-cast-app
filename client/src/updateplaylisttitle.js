@@ -6,8 +6,8 @@ function UpdatePlaylistTitle({selectedPlaylist, handleTogglePlaylist}) {
     const [changeTitle, setChangeTitle] = useState("")
 
     function handleChangeTitle() {
-        console.log("toggled")
         setToggleText(!toggleText)
+        console.log(selectedPlaylist)
     }
 
     function handleNewTitle(e) {
@@ -25,26 +25,27 @@ function UpdatePlaylistTitle({selectedPlaylist, handleTogglePlaylist}) {
             },
         })
         .then((res) => res.json())
-        .then((json) => console.log(json))
-        handleChangeTitle()
-        handleTogglePlaylist()
-        
+        .then((json) => {
+            handleTogglePlaylist()
+            handleChangeTitle()
+        })
     }
 
     if (toggleText === false) {
         return (
             <div>
-                <Button type="button" className="btn btn-success" onClick={handleChangeTitle}>Change Playlist Title</Button>
+                <Button type="button" className="btn btn-dark btn-outline-success" onClick={handleChangeTitle}>Change Playlist Title</Button>
             </div>
         )
     } else {
         return (
-            <div className="App" onChange={handleNewTitle}>
+            <div className="App btn-group" onChange={handleNewTitle}>
                 <div className="container h-100">
                     <div className="row h-100 justify-content-center align-items-center"></div>
                     <InputGroup className="col-6">
                         <FormControl placeholder="New Title" aria-label="Search" aria-describedby="basic-addon2" />
                         <Button variant="outline-secondary" id="button-addon2" onClick={handleUpdate}>Enter</Button>
+                        <Button type="button" className="btn btn-dark btn-outline-danger" onClick={handleChangeTitle}>X</Button>
                     </InputGroup>
                 </div>
             </div>

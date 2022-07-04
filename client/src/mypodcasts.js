@@ -33,7 +33,7 @@ function MyPodCasts({user}) {
         if (selectedPodCast !== "") {
             return (
                 <div>
-                    <Button type="button" class="btn btn-dark btn-outline-light btn-sm" onClick={handleBack}>Back</Button>
+                    <Button type="button" className="btn btn-dark btn-outline-light btn-sm" onClick={handleBack}>Back</Button>
                     <Episodes selectedPodCast={selectedPodCast} user={user} handleToggle={handleToggle}/>
                 </div>
             )
@@ -41,7 +41,7 @@ function MyPodCasts({user}) {
         if (podList !== "") {
             return podList.map((pod) => {
                 return (<div key={pod.pod_cast.title}>
-                            <h4>{pod.pod_cast.title}</h4>
+                            <h4>|{pod.pod_cast.title}|</h4>
                             <Button type="button" value={pod.pod_cast.id} className="btn btn-dark" onClick={handleOnClick}>
                                 <img src={pod.pod_cast.thumb_nail} alt="error" class="img-thumbnail" />
                             </Button>

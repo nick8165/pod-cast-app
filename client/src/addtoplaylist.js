@@ -42,14 +42,14 @@ function AddToPlaylist({user, podList, selectedPlaylist, handleAddReset, updateP
                     return (
                         <div key={pod.title}>
                             <img src={pod.thumb_nail} alt="error" />
-                            <Button id={pod.id} type="button" className="btn btn-success" onClick={handleUnAddRequest}>Added</Button>
+                            <Button id={pod.id} type="button" className="btn btn-dark btn-outline-success" onClick={handleUnAddRequest}>Added</Button>
                         </div>
                     )
                 } else {
                     return (
                         <div key={pod.title}>
                             <img src={pod.thumb_nail} alt="error" />
-                            <Button id={pod.id} type="button" className="btn btn-dark" onClick={handleAddRequest}>+ Add To Playlist</Button>
+                            <Button id={pod.id} type="button" className="btn btn-dark btn-outline-light" onClick={handleAddRequest}>+ Add To Playlist</Button>
                         </div>
                     )
                 }
@@ -58,7 +58,7 @@ function AddToPlaylist({user, podList, selectedPlaylist, handleAddReset, updateP
 
     return (
         <div>
-            <Button type="button" onClick={handleAddReset}>back</Button>
+            <Button type="button" className="btn btn-dark btn-outline-light" onClick={handleAddReset}>back</Button>
             {displayPods()}
         </div>
     )
