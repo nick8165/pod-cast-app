@@ -25,6 +25,16 @@ function App() {
 
   function handleLogout() {
     setCurrentUser("")
+    fetch(`/logout`, {
+      method: 'DELETE',
+    })
+    .then((res) => {
+      if(res.ok){
+          console.log(res)
+      } else {
+          res.json().then(console.log)
+      }
+    })
   }
 
   if(!currentUser) return (
