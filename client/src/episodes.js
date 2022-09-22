@@ -7,7 +7,7 @@ function Episodes({selectedPodCast, user}) {
     const [selectedPod, setSelectedPod] = useState("") 
     
     useEffect(() => {
-        fetch(`/userPod/${user.id}`)
+        fetch(`/user_pod_casts/${user.id}`)
         .then(res => {
           if(res.ok) {
             res.json().then(pod => setSelectedPod(pod))
@@ -31,7 +31,7 @@ function Episodes({selectedPodCast, user}) {
             user_id: user.id,
             pod_cast_id: selectedPodCast.id
         }
-        fetch('/userPod', {
+        fetch('/user_pod_casts', {
             method: 'POST',
             headers: {'Content-Type':'application/json'},
             body: JSON.stringify(userPod)
@@ -41,7 +41,7 @@ function Episodes({selectedPodCast, user}) {
 
     function handleUnAdd() {
         setClick(false)
-        fetch(`/userPodDelete/${user.id}/${selectedPodCast.id}`, {
+        fetch(`/user_pod_casts/${user.id}/${selectedPodCast.id}`, {
             method: 'DELETE',
         })
         .then((res) => {

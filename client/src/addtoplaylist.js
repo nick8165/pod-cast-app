@@ -13,7 +13,7 @@ function AddToPlaylist({user, podList, selectedPlaylist, handleAddReset, updateP
             playlist_id: selectedPlaylist[0].id,
             pod_cast_id: e.target.id
         }
-        fetch('/playlistPod', {
+        fetch('/playlist_pod_casts', {
             method: 'POST',
             headers: {'Content-Type':'application/json'},
             body: JSON.stringify(addPod)
@@ -22,7 +22,7 @@ function AddToPlaylist({user, podList, selectedPlaylist, handleAddReset, updateP
     }
 
     function handleUnAddRequest(e) {
-        fetch(`/playlistPodDelete/${selectedPlaylist[0].id}/${e.target.id}`, {
+        fetch(`/playlist_pod_casts/${selectedPlaylist[0].id}/${e.target.id}`, {
             method: 'DELETE',
         })
         .then((res) => {

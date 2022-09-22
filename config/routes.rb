@@ -14,14 +14,11 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
   get "/auth", to: "users#show"
-  get "/podcast", to: "pod_casts#index"
-  get "/userPod/:user_id", to: "user_pod_casts#show"
-  post "/userPod", to: "user_pod_casts#create"
-  delete "/userPodDelete/:user_id/:pod_cast_id", to: "user_pod_casts#destroy"
+  get "/user_pod_casts/:user_id", to: "user_pod_casts#show"
+  delete "/user_pod_casts/:user_id/:pod_cast_id", to: "user_pod_casts#destroy"
   get "/userPlaylists/:user_id", to: "playlists#user_playlists"
-  get "/playlistPod/:playlist_id", to: "playlist_pod_casts#show"
-  post "/playlistPod", to: "playlist_pod_casts#create"
-  delete "/playlistPodDelete/:playlist_id/:pod_cast_id", to: "playlist_pod_casts#destroy"
+  get "/playlist_pod_casts/:playlist_id", to: "playlist_pod_casts#show"
+  delete "/playlist_pod_casts/:playlist_id/:pod_cast_id", to: "playlist_pod_casts#destroy"
 
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!

@@ -7,7 +7,7 @@ function Home({user}) {
     const [desiredSearch, setDesiredSearch] = useState("")
 
     useEffect(() => [
-        fetch('/podcast')
+        fetch('/pod_casts')
         .then(res => {
             if(res.ok) {
                 res.json().then(podcast => setPodCastList(podcast))
