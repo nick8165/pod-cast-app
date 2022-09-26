@@ -1,13 +1,12 @@
 import React, {useState} from "react"
 import { FormControl, InputGroup, Button} from "react-bootstrap"
 
-function UpdatePlaylistTitle({selectedPlaylist, handleTogglePlaylist}) {
+function UpdatePlaylistTitle({selectedPlaylist, reset}) {
     const [toggleText, setToggleText] = useState(false)
     const [changeTitle, setChangeTitle] = useState("")
 
     function handleChangeTitle() {
         setToggleText(!toggleText)
-        console.log(selectedPlaylist)
     }
 
     function handleNewTitle(e) {
@@ -24,10 +23,13 @@ function UpdatePlaylistTitle({selectedPlaylist, handleTogglePlaylist}) {
                 'Content-type': 'application/json; charset=UTF-8',
             },
         })
-        .then((res) => res.json())
-        .then((json) => {
-            handleTogglePlaylist()
-            handleChangeTitle()
+        .then((res) => {
+            if(res.ok){
+                reset()
+                handleChangeTitle()
+            } else {
+                res.json().then(console.log)
+            }
         })
     }
 

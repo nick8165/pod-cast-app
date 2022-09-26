@@ -17,7 +17,7 @@ function Playlist({user}) {
             res.json().then(list => setPlaylists(list))
           }
         })
-    },[togglePlaylist])
+    },[togglePlaylist, selectedPlaylist])
     
     function handleCreate() {
         setCreateToggle(!createToggle)

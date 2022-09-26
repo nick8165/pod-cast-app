@@ -2,7 +2,7 @@ import React, {useState} from "react"
 import {Button} from "react-bootstrap"
 import DeleteWarning from "./deletewarning"
 
-function RemovePlaylist({selectedPlaylist, user}) {
+function RemovePlaylist({selectedPlaylist, reset}) {
     const [toggle, setToggle] = useState(false)
 
     function handleToggle() {
@@ -16,6 +16,8 @@ function RemovePlaylist({selectedPlaylist, user}) {
         .then((res) => {
             if(res.ok){
                 console.log(res)
+                reset()
+                setToggle(!toggle)
             } else {
                 res.json().then(console.log)
             }

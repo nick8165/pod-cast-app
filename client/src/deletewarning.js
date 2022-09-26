@@ -5,7 +5,6 @@ function DeleteWarning({handleToggle, handleDelete}) {
 
     function handleYes() {
         handleDelete()
-        handleToggle()
     }
 
     function handleNo() {

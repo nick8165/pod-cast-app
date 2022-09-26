@@ -9,7 +9,6 @@ function CreatePlaylist({handleCreate, user}) {
     }
 
     function handleClick() {
-        handleCreate()
         const playlist = {
             user_id: user.id,
             title: title
@@ -18,6 +17,14 @@ function CreatePlaylist({handleCreate, user}) {
             method: 'POST',
             headers: {'Content-Type':'application/json'},
             body: JSON.stringify(playlist)
+        })
+        .then((res) => {
+            if(res.ok){
+                console.log(res)
+                handleCreate()
+            } else {
+                res.json().then(console.log)
+            }
         })
     }
 

@@ -12,7 +12,7 @@ function AddToPlaylist({user, podList, selectedPlaylist, handleAddReset, updateP
           }
         })
       },[])
-   console.log(podList)
+   
     let array = []
     podList.map((pod) => {
         array.push(pod.pod_cast.id)
@@ -29,7 +29,14 @@ function AddToPlaylist({user, podList, selectedPlaylist, handleAddReset, updateP
             headers: {'Content-Type':'application/json'},
             body: JSON.stringify(addPod)
         })
-        updatePodList()
+        .then((res) => {
+            if(res.ok){
+                console.log(res)
+                updatePodList()
+            } else {
+                res.json().then(console.log)
+            }
+        })
     }
 
     function handleUnAddRequest(e) {
@@ -39,19 +46,11 @@ function AddToPlaylist({user, podList, selectedPlaylist, handleAddReset, updateP
         .then((res) => {
             if(res.ok){
                 console.log(res)
+                updatePodList()
             } else {
                 res.json().then(console.log)
             }
         })
-        let array2 = []
-        array.map((id) => {
-            if (id !== e.target.id) {
-                array2.push(id)
-            } else {
-                console.log("false")
-            }
-        })
-        return array = array2    
     }
 
     function displayPods() {

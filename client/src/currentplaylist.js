@@ -16,7 +16,7 @@ function CurrentPlaylist({reset, user, selectedPlaylist, handleTogglePlaylist}) 
       }
     })
   },[toggleAdd])
-  
+
   function updatePodList() {
     fetch(`/playlist_pod_casts_show/${selectedPlaylist[0].id}`)
     .then(res => {
@@ -62,9 +62,9 @@ function CurrentPlaylist({reset, user, selectedPlaylist, handleTogglePlaylist}) 
     return (
       <div class="btn-group">
         <Button type="button" className="btn btn-dark btn-outline-light btn-sm" onClick={reset}>back</Button>
-        <UpdatePlaylistTitle selectedPlaylist={selectedPlaylist} handleTogglePlaylist={handleTogglePlaylist}/>
+        <UpdatePlaylistTitle selectedPlaylist={selectedPlaylist} reset={reset} />
         <Button type="button" className="btn btn-dark btn-outline-light" onClick={handleAdd}>Add/Remove From Playlist</Button>
-        <RemovePlaylist selectedPlaylist={selectedPlaylist} user={user}/>
+        <RemovePlaylist selectedPlaylist={selectedPlaylist} reset={reset} />
       </div>
     )
   }
