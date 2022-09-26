@@ -7,7 +7,7 @@ function Episodes({selectedPodCast, user}) {
     const [selectedPod, setSelectedPod] = useState("") 
     
     useEffect(() => {
-        fetch(`/user_pod_casts/${user.id}`)
+        fetch(`/user_pod_id_show/${user.id}`)
         .then(res => {
           if(res.ok) {
             res.json().then(pod => setSelectedPod(pod))
@@ -41,7 +41,7 @@ function Episodes({selectedPodCast, user}) {
 
     function handleUnAdd() {
         setClick(false)
-        fetch(`/user_pod_casts/${user.id}/${selectedPodCast.id}`, {
+        fetch(`/user_pod_cast/${user.id}/${selectedPodCast.id}`, {
             method: 'DELETE',
         })
         .then((res) => {
@@ -68,7 +68,10 @@ function Episodes({selectedPodCast, user}) {
                 </div>)
             })}
             <h3 className='li'>Developed by {selectedPodCast.creator.name}</h3>
-            <h6 className='li'>Genre: {selectedPodCast.genres[0].category}</h6>
+            <h6 className='li'>Genre: </h6>
+            {selectedPodCast.genres.map((gen) => {
+               return( <h6 className='li' key={gen.category} >{gen.category}</h6>)
+            })}
             </ul>
         )
     }

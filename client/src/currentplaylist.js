@@ -9,16 +9,16 @@ function CurrentPlaylist({reset, user, selectedPlaylist, handleTogglePlaylist}) 
   const [toggleAdd, setToggleAdd] = useState(false)
   
   useEffect(() => {
-    fetch(`/playlist_pod_casts/${selectedPlaylist[0].id}`)
+    fetch(`/playlist_pod_casts_show/${selectedPlaylist[0].id}`)
     .then(res => {
       if(res.ok) {
         res.json().then(pod => setPodList(pod))
       }
     })
   },[toggleAdd])
-
+  
   function updatePodList() {
-    fetch(`/playlist_pod_casts/${selectedPlaylist[0].id}`)
+    fetch(`/playlist_pod_casts_show/${selectedPlaylist[0].id}`)
     .then(res => {
       if(res.ok) {
         res.json().then(pod => setPodList(pod))

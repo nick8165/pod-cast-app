@@ -8,7 +8,7 @@ function MyPodCasts({user}) {
     const [podList, setPodList] = useState("") 
     
     useEffect(() => {
-        fetch(`/user_pod_casts/${user.id}`)
+        fetch(`/user_pod_id_show/${user.id}`)
         .then(res => {
           if(res.ok) {
             res.json().then(pod => setPodList(pod))
