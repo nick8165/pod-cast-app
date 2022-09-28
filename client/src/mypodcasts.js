@@ -14,7 +14,7 @@ function MyPodCasts({user}) {
             res.json().then(pod => setPodList(pod))
           }
         })
-      },[])
+      },[selectedPodCast])
 
     function handleToggle() {
         setToggle(!toggle)
@@ -27,6 +27,10 @@ function MyPodCasts({user}) {
                 res.json().then(ep => setSelectedPodCast(ep))
             }
         })
+    }
+
+    function handleBack() {
+        setSelectedPodCast("")
     }
 
     function displayMyPodCasts() {
@@ -50,10 +54,6 @@ function MyPodCasts({user}) {
         } else {
             return (<h1>Loading...</h1>)
         }
-    }
-
-    function handleBack() {
-        setSelectedPodCast("")
     }
 
     return(
