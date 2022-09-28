@@ -13,7 +13,7 @@ function Login({onLogin}) {
         },
         body: JSON.stringify({ username, password }),
       })
-        .then((r) => r.json())
+        .then((res) => res.json())
         .then((user) => onLogin(user));
     }
 

@@ -19,6 +19,18 @@ function App() {
     })
   },[])
 
+  function onSignUp(username, password) {
+    fetch("/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ username, password }),
+    })
+      .then((res) => res.json())
+      .then((user) => onLogin(user))
+  }
+
   function onLogin(user) {
     setCurrentUser(user)
   }
@@ -65,7 +77,7 @@ function App() {
               <Routes>
                 <Route exact path="/" element={<Login onLogin={onLogin} />} />
                 <Route path="/sign-in" element={<Login onLogin={onLogin} />} />
-                <Route path="/sign-up" element={<SignUp onLogin={onLogin} />} />
+                <Route path="/sign-up" element={<SignUp onLogin={onLogin} onSignUp={onSignUp}/>} />
               </Routes>
             </div>
           </div>
@@ -76,9 +88,9 @@ function App() {
       <button type="button" class="btn btn-link" onClick={handleLogout}>Logout</button>
       <NavBar />
       <Routes>
+        <Route exact path="/" element={<Home user={currentUser}/>} />
         <Route exact path="mypodcasts" element={<MyPodCasts user={currentUser}/>} />
         <Route exact path="playlist" element={<Playlist user={currentUser}/>} />
-        <Route exact path="/" element={<Home user={currentUser}/>} />
       </Routes>
     </div>
   );
