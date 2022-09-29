@@ -19,11 +19,15 @@ function Home({user}) {
         setDesiredSearch(e)
     }
 
+    function resetDesiredSearch() {
+        setDesiredSearch("")
+    }
+
     return (
         <div>
             <PodCastSearch handleSearchValue={handleSearchValue}/>
             <h1>Home Page Browse</h1>
-            <Browse podCastList={podCastList} user={user} desiredSearch={desiredSearch}/>
+            <Browse podCastList={podCastList} user={user} desiredSearch={desiredSearch} resetDesiredSearch={resetDesiredSearch} />
         </div>
     )
 }

@@ -2,7 +2,7 @@ import React, {useState} from "react"
 import {Button} from "react-bootstrap"
 import Episodes from "./episodes"
 
-function Browse({podCastList, user, desiredSearch}) {
+function Browse({podCastList, user, desiredSearch, resetDesiredSearch}) {
     const [selectedPodCast, setSelectedPodCast] = useState("") 
 
     function handleOnClick(e) {
@@ -18,14 +18,13 @@ function Browse({podCastList, user, desiredSearch}) {
         if (selectedPodCast !== "") {
             return (
                 <div>
-                    <button type="button" class="btn btn-dark btn-outline-light btn-sm" onClick={handleBack}>Back</button>
                     <Episodes selectedPodCast={selectedPodCast} user={user}/>
                 </div>
             )
         }
         if (desiredSearch !== "") {
             let found = podCastList.find((pod) => {
-                return pod.title === desiredSearch
+                return pod.title.toLowerCase().includes(desiredSearch.toLowerCase())
             })
             return (
                 <div>
@@ -52,10 +51,12 @@ function Browse({podCastList, user, desiredSearch}) {
 
     function handleBack() {
         setSelectedPodCast("")
+        resetDesiredSearch()
     }
 
     return (
         <div>
+            <button type="button" class="btn btn-dark btn-outline-light btn-sm" onClick={handleBack}>Back</button>
             {displayPodCast()}
         </div>
     )
