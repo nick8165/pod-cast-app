@@ -13,8 +13,19 @@ function Login({onLogin}) {
         },
         body: JSON.stringify({ username, password }),
       })
-        .then((res) => res.json())
-        .then((user) => onLogin(user));
+        .then((res) => {
+          if (res.ok) {
+            return res.json()
+          } else {
+            return false
+          }
+        })
+        .then((user) => {
+          if (user === false) {
+            console.log(user)
+          } else {
+            onLogin(user)
+          }});
     }
 
     function handleUsername(e) {

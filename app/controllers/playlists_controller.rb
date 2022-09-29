@@ -1,4 +1,5 @@
 class PlaylistsController < ApplicationController
+    rescue_from ActiveRecord::RecordNotFound, with: :playlist_not_found
     before_action :authorized
     
     def show
@@ -8,11 +9,7 @@ class PlaylistsController < ApplicationController
 
     def user_playlists
         playlist = Playlist.where(user_id: params[:user_id])
-        if playlist
-            render json: playlist
-        else
-            render json: {error: "playlist not found"}, status: :not_found
-        end
+        render json: playlist
     end
     
     def index
@@ -27,28 +24,24 @@ class PlaylistsController < ApplicationController
 
     def update
         playlist = Playlist.find_by(id: params[:id])
-        if playlist
-            playlist.update(playlist_params)
-            render json: playlist, status: :accepted
-        else
-            render json: {error: "playlist not found"}, status: :not_found
-        end
+        playlist.update(playlist_params)
+        render json: playlist, status: :accepted
     end
 
     def destroy
         playlist = Playlist.find(params[:id])
-        if playlist
-            playlist.destroy
-            head :no_content
-        else
-            render json: {error: "playlist not found"}, status: :not_found
-        end
+        playlist.destroy
+        head :no_content
     end
     
     private
 
     def playlist_params
         params.permit(:title, :user_id)
+    end
+
+    def playlist_not_found
+        render json: {error: "Playlist not found "}, status: :not_found
     end
 
 end
